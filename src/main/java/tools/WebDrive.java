@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class WebDrive {
 
-	public WebDriver driver;
+	public static WebDriver driver;
 	public WebElement elem;
 	
 	public WebDrive(String browser){
@@ -25,7 +25,7 @@ public class WebDrive {
 	}
 	
 	
-	public void get(String url) {
+	public void Get(String url) {
 		driver.get(url);
 	}
 	
@@ -44,12 +44,12 @@ public class WebDrive {
 		x.click();
 	}
 	
-	public String PageTitle() {
+	public String GetPageTitle() {
 		String Title=driver.getTitle();
 		return (Title);
 	}
 	
-	public void EndDriver() {
+	public void QuitDriver() {
 		driver.quit();
 	}
 	

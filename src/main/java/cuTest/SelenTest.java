@@ -1,4 +1,5 @@
-package cucumberTest;
+package cuTest;
+
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -15,6 +16,7 @@ public class SelenTest {
 		driver.findElement(By.id("submit1")).click();
 		System.out.println(driver.getTitle());
 		driver.quit();
+		
 	}
 
 }

@@ -12,23 +12,37 @@ public class Homepage {
 	public String Go_Button_id="submit1"; //id
 	public String Page_Title="Startpage Web Search";
 	
-	public Homepage(String browser){
-		D=new WebDrive(browser);
+	public Homepage(WebDrive drive){
+		this.D=drive;
 	}
 	public void Open() {
-		D.get(Home_url);
+		D.Get(Home_url);
 	}
 	
 	public void ClickGo() {
 		D.Click(D.FindElement(Go_Button_id, "id"));
 	}
 	
-	public void CheckPageTitle() {
-		String ActualPageTitle=D.PageTitle();
+	public boolean CheckPageTitle() {
+		String ActualPageTitle=D.GetPageTitle();
 		if (Page_Title.equals(ActualPageTitle)) {
 			System.out.println("Page Title Matched");
+			return (true);
 		}else {
 			System.out.println("Page Title fails to match : Actual != Expected :: "+ ActualPageTitle +" != " + Page_Title );
+			return (false);
+		}
+		
+	}
+	
+	public boolean CheckPageTitle(String PageTitle) {
+		String ActualPageTitle=D.GetPageTitle();
+		if (PageTitle.equals(ActualPageTitle)) {
+			System.out.println("Page Title Matched");
+			return (true);
+		}else {
+			System.out.println("Page Title fails to match : Actual != Expected :: "+ ActualPageTitle +" != " + PageTitle );
+			return (false);
 		}
 		
 	}
