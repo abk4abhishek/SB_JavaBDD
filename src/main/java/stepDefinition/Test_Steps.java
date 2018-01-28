@@ -2,7 +2,6 @@ package stepDefinition;
 
 import static org.junit.Assert.assertTrue;
 
-import org.junit.internal.Throwables;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
@@ -19,6 +18,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 import cuTest.Base;
+import tools.Log;
 
 public class Test_Steps {
 //	public static WebDriver driver=null;
@@ -27,10 +27,15 @@ public class Test_Steps {
 	@Before
 	public void SetUp() throws Throwable{
 		root=new Base("chrome");
+		Log.info("Initiating Browser");
+		Log.startTestCase("Homepage Web Search");
 	}
 	
 	@After
 	public void TearDown(Scenario scenario) throws Throwable{
+		Log.endTestCase("Homepage Web Search");
+		Log.info("Closing Browser");
+		
 		if (scenario.isFailed()) {
 	         scenario.embed(((TakesScreenshot)root.D.driver).getScreenshotAs(OutputType.BYTES), "image/png");
 	        }
